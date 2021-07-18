@@ -13,7 +13,7 @@ langs = ["Japanese", "English", "Chinese", "Russian", "French", "Korean", "Hindi
 
 corpus = []
 for lang in langs:
-    with open(f'comments_by_lang/{lang}.txt', mode="rb") as f:
+    with open(f'comments_by_lang/{lang.lower()}.txt', mode="rb") as f:
         text = f.read().decode("utf-8")
     corpus.append(text)
 
