@@ -3,6 +3,7 @@ import wordcloud
 import matplotlib.pyplot as plt
 from sklearn.feature_extraction.text import TfidfVectorizer
 import numpy as np
+import pandas as pd
 
 # TODO: DBに移行
 # TODO: 再生回数も調べたい
@@ -32,5 +33,6 @@ plt.imshow(wc)
 st.pyplot(fig)
 
 tfidf_index = langs.index(lang)
-top_word_indices = np.argsort(X.toarray())[:, -20:-1][tfidf_index]
-st.write([tfidf.get_feature_names()[i] for i in top_word_indices])
+top_word_indices = np.argsort(X.toarray())[:, -50:-1][tfidf_index]
+
+st.table(pd.DataFrame({"特徴語": [tfidf.get_feature_names()[i] for i in top_word_indices[::-1]]}))
