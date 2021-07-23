@@ -7,7 +7,7 @@ import numpy as np
 # TODO: DBに移行
 # TODO: 再生回数も調べたい
 
-st.title("Comments of YouTube videos for beginners of language")
+st.title("YouTube外国語学習動画のコメント分析")
 
 langs = ["Japanese", "English", "Chinese", "Russian", "French", "Korean", "Hindi", "German", "Spanish", "Turkish"]
 
@@ -20,7 +20,7 @@ for lang in langs:
 tfidf = TfidfVectorizer(stop_words=wordcloud.STOPWORDS)
 X = tfidf.fit_transform(corpus)
 
-lang = st.selectbox("Language", langs)
+lang = st.selectbox("言語", langs)
 
 with open(f'comments_by_lang/{lang.lower()}.txt', mode="rb") as f:
     text = f.read().decode("utf-8")
